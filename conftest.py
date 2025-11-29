@@ -18,7 +18,6 @@ def delete_user(access_token: str):
 def authorized_user():
     user_data = get_valid_user()
     resp = requests.post(Config.USER_CREATE_URL, json=user_data)
-
     access_token = resp.json().get("accessToken")
     user_from_resp = resp.json().get("user", {})
     user_data.update(user_from_resp)
