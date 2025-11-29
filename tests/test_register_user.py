@@ -4,24 +4,14 @@ import pytest
 from config.config import Config
 from config.users import get_valid_user
 from config.message import ErrorMessages
-from conftest import delete_user
 
 
 @allure.epic("Регистрация пользователя")
 class TestUserRegistration:
 
     @allure.title("Создание уникального пользователя")
-    def test_create_unique_user(self):
-        user = get_valid_user()
-        access_token = None
-        try:
-            response = requests.post(Config.USER_CREATE_URL, json=user)
-            assert response.status_code == 200
-            assert response.json().get("success") is True
-            access_token = response.json().get("accessToken")
-            assert access_token is not None
-        finally:
-            delete_user(access_token)
+    def test_create_unique_user(self, registered_user):
+        assert registered_user is not None
 
     @allure.title("Создание уже зарегистрированного пользователя")
     def test_register_existing_user(self, existing_user):

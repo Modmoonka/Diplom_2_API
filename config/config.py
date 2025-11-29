@@ -6,7 +6,5 @@ class Config:
     USER_LOGIN_URL = f'{BASE_URL}/auth/login'
     UPDATE_USER = f'{BASE_URL}/auth/user'
     USER_DELETE_URL = f'{BASE_URL}/auth/user'
-
     ORDER_URL = f'{BASE_URL}/orders'
-
     INGREDIENTS = f'{BASE_URL}/ingredients'
